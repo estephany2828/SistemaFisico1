@@ -1,0 +1,55 @@
+<!--
+  Generated template for the ConInicialPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    Sistema M-R-A 
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <img src="/assets/imgs/imagen.png">
+
+<ion-list>
+  <ion-item>
+    Ecuación Dinámica 
+
+    {{ecuacionLaplace}}          
+  </ion-item>
+  <ion-item>
+    <img src="/assets/imgs/ecuacion.png">           
+  </ion-item>
+  <ion-item>
+    <ion-label >Masa:</ion-label>
+    <ion-input type="text" [(ngModel)]="entradaM" name="entradaM"></ion-input>      
+  </ion-item>
+  <ion-item>
+    <ion-label >Resorte:</ion-label>
+    <ion-input type="text" [(ngModel)]="entradaK" name="entradaK"></ion-input>        
+  </ion-item>
+  <ion-item>
+    <ion-label >Amortiguador:</ion-label>
+    <ion-input type="text" [(ngModel)]="entradaB" name="entradaB"></ion-input>        
+  </ion-item>
+
+</ion-list>
+<!--<button ion-button block color="danger" (click)="mostrar()">enviar</button>-->
+<ion-label >ecuacion inicial: {{resultado}}</ion-label>
+<ion-label >Aplicando transformada de laplace: {{resultado1}}</ion-label>
+<ion-label >Factorizando: {{resultado2}}</ion-label>
+<ion-label >Función de transferencia: {{resultado3}}</ion-label>
+<ion-label >1</ion-label>
+<ion-label >_____________</ion-label>
+<ion-label >{{resultado3}}</ion-label>
+<ion-fab bottom right>
+<button ion-fab color="danger" (click)="mostrar()"> Resolver </button>
+</ion-fab>
+</ion-content>
+<ion-footer>
+<ion-toolbar>
+  <ion-title>Footer</ion-title>
+</ion-toolbar>
+</ion-footer>
