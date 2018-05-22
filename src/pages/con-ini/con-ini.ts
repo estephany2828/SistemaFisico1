@@ -30,13 +30,16 @@ export class ConIniPage {
   resultado3: string='';
   resultado4: string='';
   espacio: string='';
+  variable:number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.variable==0;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConIniPage');
   }
   mostrar(){
+    
     //ecuacion en terminos del desplazamiento
     this.ecuacionInicial= ['+','','x"(t)','+','',"x'(t)",'+','','x(t)','=','Fa'];
     this.ecuacionInicial[1]=this.entradaM;
@@ -66,7 +69,7 @@ export class ConIniPage {
     //Despeje de la ecuación
     //denominador
     this.resultado3='1/'.concat(this.ecuacionFac[2]);
-    
+    this.variable=1;
     }
   
   

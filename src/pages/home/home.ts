@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ConIniPage} from '../con-ini/con-ini';
+import {SinIniPage} from '../sin-ini/sin-ini';
 
 @Component({
   selector: 'page-home',
@@ -10,8 +11,15 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
     
-    this.navCtrl.push(ConIniPage);
+    
 
   }
  
+ goToConInicialPage():void{
+  this.navCtrl.push(ConIniPage);
+ }
+
+ goToSinInicialPage():void{
+  this.navCtrl.push(SinIniPage);
+ }
 }

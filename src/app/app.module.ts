@@ -7,10 +7,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ConIniPage } from '../pages/con-ini/con-ini';
+import { SinIniPage } from '../pages/sin-ini/sin-ini';
 
 @NgModule({
   declarations: [
     ConIniPage,
+    SinIniPage,
     MyApp,
     HomePage,
     
@@ -22,8 +24,10 @@ import { ConIniPage } from '../pages/con-ini/con-ini';
   bootstrap: [IonicApp],
   entryComponents: [
     ConIniPage,
+    SinIniPage,
     MyApp,
     HomePage,
+    
     
   ],
   providers: [
