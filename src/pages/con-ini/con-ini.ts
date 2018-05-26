@@ -24,38 +24,72 @@ export class ConIniPage {
   entradaM: string;
   entradaK: string;
   entradaB: string;
+  fuerza:string;
   resultado: string='';
-  resultado1: string='';
+  apliLaplace: string[]=[];//index0: transformada a toda la ecuacion
+  resultado11: string='';
+  resultado111: string='';
+  resultado1111: string='';
   resultado2: string='';
   resultado3: string='';
   resultado4: string='';
   espacio: string='';
   variable:number;
+  signo:string[]=[];//variable que almacena los signos
+  btnSigno:number[]=[1,1,1,1,1];
+  reunir:string='';
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.variable==0;
-  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ConIniPage');
   }
+ 
   mostrar(){
-    
+    this.funRecorrerSigno(this.btnSigno);   
+    this.entradaM=this.entradaM.substring(0,this.entradaM.length);
+    this.entradaK=this.entradaK.substring(0,this.entradaK.length);
+    this.entradaB=this.entradaB.substring(0,this.entradaB.length);
+    this.fuerza=this.fuerza.substring(0,this.fuerza.length);    
+
     //ecuacion en terminos del desplazamiento
-    this.ecuacionInicial= ['+','','x"(t)','+','',"x'(t)",'+','','x(t)','=','Fa'];
-    this.ecuacionInicial[1]=this.entradaM;
-    this.ecuacionInicial[4]=this.entradaK;
-    this.ecuacionInicial[7]=this.entradaB;
-    this.resultado=this.concatenar(this.ecuacionInicial,0);
-    
-    //sobre escribo en la ecuacion inicial los valore de m,k,b
-    this.ecuacionLaplace= ['+','','(s^2)','X(s)','+','','s','X(s)','+','','X(s)','=','F(s)'];
-    this.ecuacionLaplace[1]=this.entradaM;
-    this.ecuacionLaplace[5]=this.entradaK;
-    this.ecuacionLaplace[9]=this.entradaB;  
+    this.ecuacionInicial= [this.signo[0],this.entradaM,'x"',
+                           this.signo[1],this.entradaK,"x'",
+                           this.signo[2],this.entradaB,'x','=',this.fuerza,"u(t)"];    
+    this.resultado=this.concatenar(this.ecuacionInicial,0);      
     //this.resultado1=this.concatenar(this.ecuacionLaplace,0);
     //el cero indica que queremos concatenar toda la cadena
     //el uno que queremos concatenar solo coeficientes
-    this.resultado1=this.concatenar(this.ecuacionLaplace,0); 
+    this.apliLaplace[0]="L{"+this.resultado+"}"; 
+    //transforada a toda la ecuacion
+    this.apliLaplace[1]="L{" + this.concatenarVectorIndex(this.ecuacionInicial,0,2)+"}"+ "+"+
+                      "L{" + this.concatenarVectorIndex(this.ecuacionInicial,3,5)+"}"+
+                      "L{" + this.concatenarVectorIndex(this.ecuacionInicial,6,8)+"}"+"="+
+                      "L{" + this.concatenarVectorIndex(this.ecuacionInicial,10,this.ecuacionInicial.length-1)+"}";
+    //sacamos el signo y el coeficiente
+    this.apliLaplace[2]=  this.signo[0]+this.entradaM+"L{"+'x"'+"}"+ 
+                        this.signo[1]+this.entradaK+"L{"+"x'"+"}"+
+                        this.signo[2]+this.entradaB+"L{"+"x"+"}"+"="+
+                        "L{" + this.concatenarVectorIndex(this.ecuacionInicial,10,this.ecuacionInicial.length-1)+"}";
+    /*
+    //
+
+    //this.resultado111=  this.signo[0]+this.entradaM+"L{"+'x"'+"}"+ 
+                        this.signo[1]+this.entradaK+"L{"+"x'"+"}"+
+                        this.signo[2]+this.entradaB+"L{"+"x"+"}"+"="+
+                        "L{" + this.concatenarVectorIndex(this.ecuacionInicial,10,this.ecuacionInicial.length-1)+"}";
+                    
+    
+
+     //sobre escribo en la ecuacion inicial los valore de m,k,b
+     this.ecuacionLaplace= [this.signo[0],this.entradaM,'(s^2)','X(s)',
+     this.signo[1],this.entradaK,'s','X(s)',
+     this.signo[0],this.entradaB,'X(s)','=','F(s)'];
+                        this.resultado1111=  this.resultado1=this.concatenar(this.ecuacionLaplace,0);
+   
+    //this.resultado1=this.concatenar(this.ecuacionLaplace,0);
+    
+    //repartimos la transformada de laplace
+
   
     //segundo paso:Factorización
     this.ecuacionFac[0]='X(s)';
@@ -68,15 +102,88 @@ export class ConIniPage {
   
     //Despeje de la ecuación
     //denominador
-    this.resultado3='1/'.concat(this.ecuacionFac[2]);
+    this.resultado3=  this.ecuacionFac[2];
+    */
     this.variable=1;
+
+    }
+
+    ionViewDidLoad() {
+      console.log('ionViewDidLoad ConIniPage');
     }
   
+    funSigno(signo:number):string{
+     if(signo==1){
+       return "+";
+     }else{ return "-"; }
+    }
+  
+    funRecorrerSigno(vector:number[]){
+      for(var i=0; i<3;i++){
+        this.signo[i]=this.funSigno(vector[i]);
+      }
+    }
+  
+
   
     
-    mostrar2(){
-  
+    cambiar(estado:number){
+      switch(estado){
+        case 0: 
+        if(this.btnSigno[0]==1){
+          this.btnSigno[0]=0;
+        }else if(this.btnSigno[0]==0){
+          this.btnSigno[0]=1;
+        } 
+      
+        break;
+        case 1: 
+        if(this.btnSigno[1]==1){
+          this.btnSigno[1]=0;
+        }else if(this.btnSigno[1]==0){
+          this.btnSigno[1]=1;
+        } 
+        break;
+        case 2: 
+        if(this.btnSigno[2]==1){
+          this.btnSigno[2]=0;
+        }else if(this.btnSigno[2]==0){
+          this.btnSigno[2]=1;
+        } 
+        break;
+        case 3: 
+        if(this.btnSigno[3]==1){
+          this.btnSigno[3]=0;
+        }else if(this.btnSigno[3]==0){
+          this.btnSigno[3]=1;
+        } 
+        break;
+        case 4: 
+        if(this.btnSigno[4]==1){
+          this.btnSigno[4]=0;
+        }else if(this.btnSigno[4]==0){
+          this.btnSigno[4]=1;
+        } 
+        break;
+      }
+
+         
+      
     }
+
+    funSimplificar(numeador:number,denomidado:number[]){
+        
+    }
+
+    concatenarVectorIndex(vector:string[],indexIni:number,indexFin:number):string{
+      var cadenaVector:string='';
+      for(var i=indexIni;i<=indexFin;i++){
+        cadenaVector+=vector[i];
+      }
+      return cadenaVector;
+    }
+
+
     concatenar(vector: string[],num:number):string{
         let cadena='';
         if(num==0){
@@ -96,4 +203,8 @@ export class ConIniPage {
         return cadena; 
       }
 
+     
+
 }
+
+    

@@ -21,14 +21,14 @@
       <ion-grid>
           <ion-row>
             
-              <ion-col col-1 >                                          
-                      <button ion-button clear  (click)="cambiar(0)" *ngIf="btnSigno[0]==1" 
-                      color="primary" block style="top:30px; width:5px;height:20px;">+</button> 
-                      <button ion-button  clear (click)="cambiar(0)" *ngIf="btnSigno[0]==0" 
-                      color="danger" block style="top:30px; width:5px;height:10px;">-</button>                                                   
-              </ion-col>                                                                                
-          
-            <ion-col col-11>   
+            <ion-col col-2 >                                         
+              <button ion-button outline (click)="cambiar(0)" *ngIf="btnSigno[0]==1" 
+              color="primary" block style="top:30px; width:5px;height:20px;">+</button> 
+              <button ion-button outline (click)="cambiar(0)" *ngIf="btnSigno[0]==0" 
+              color="primary" block style="top:30px; width:5px;height:20px;">-</button>                                             
+          </ion-col> 
+
+            <ion-col col-10>   
               <ion-item >                             
                     <ion-label stacked>Masa</ion-label>                                                           
                     <ion-input type="number" [(ngModel)]="entradaM" name="entradaM"></ion-input>

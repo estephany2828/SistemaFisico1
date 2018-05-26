@@ -95,7 +95,7 @@ export class SinIniPage {
         case 0: 
         if(this.btnSigno[0]==1){
           this.btnSigno[0]=0;
-        }else if(this.btnSigno[1]==0){
+        }else if(this.btnSigno[0]==0){
           this.btnSigno[0]=1;
         } 
         break;
