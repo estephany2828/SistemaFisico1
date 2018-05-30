@@ -32,11 +32,11 @@ export class ConIniPage {
   resultado1111: string='';
   resultado2: string='';
   resultado3: string='';
-  resultado4: string='';
+  resultado44: string='';
   espacio: string='';
   variable:number;
   signo:string[]=[];//variable que almacena los signos
-  btnSigno:number[]=[1,1,1,1,1];
+  btnSigno:number[]=[1,1,1,1,1,1];
   reunir:string='';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -54,7 +54,7 @@ export class ConIniPage {
     //ecuacion en terminos del desplazamiento
     this.ecuacionInicial= [this.signo[0],this.entradaM,'x"',
                            this.signo[1],this.entradaK,"x'",
-                           this.signo[2],this.entradaB,'x','=',this.fuerza,"u(t)"];    
+                           this.signo[2],this.entradaB,'x',"=",this.signo[3],this.fuerza,"u(t)"];    
     this.resultado=this.concatenar(this.ecuacionInicial,0);      
     //this.resultado1=this.concatenar(this.ecuacionLaplace,0);
     //el cero indica que queremos concatenar toda la cadena
@@ -62,16 +62,36 @@ export class ConIniPage {
     this.apliLaplace[0]="L{"+this.resultado+"}"; 
     //transforada a toda la ecuacion
     this.apliLaplace[1]="L{" + this.concatenarVectorIndex(this.ecuacionInicial,0,2)+"}"+ "+"+
-                      "L{" + this.concatenarVectorIndex(this.ecuacionInicial,3,5)+"}"+
+                      "L{" + this.concatenarVectorIndex(this.ecuacionInicial,3,5)+"}"+"+"+
                       "L{" + this.concatenarVectorIndex(this.ecuacionInicial,6,8)+"}"+"="+
                       "L{" + this.concatenarVectorIndex(this.ecuacionInicial,10,this.ecuacionInicial.length-1)+"}";
     //sacamos el signo y el coeficiente
     this.apliLaplace[2]=  this.signo[0]+this.entradaM+"L{"+'x"'+"}"+ 
                         this.signo[1]+this.entradaK+"L{"+"x'"+"}"+
                         this.signo[2]+this.entradaB+"L{"+"x"+"}"+"="+
-                        "L{" + this.concatenarVectorIndex(this.ecuacionInicial,10,this.ecuacionInicial.length-1)+"}";
-    /*
-    //
+                        this.signo[3]+"L{" + this.concatenarVectorIndex(this.ecuacionInicial,11,this.ecuacionInicial.length-1)+"}";
+                      
+    
+    this.apliLaplace[3]=  this.signo[0]+this.entradaM+"["+"s^2"+'x(s)'+"]"+ 
+                          this.signo[1]+this.entradaK+"["+"s"+'x(s)'+"]"+ 
+                          this.signo[2]+this.entradaB+"["+'x(s)'+"]"+"="+
+                          this.signo[3]+this.fuerza+"["+"1/s"+"]";    
+     //Factorización
+     this.ecuacionFac[0]='X(s)';
+     this.ecuacionFac[1]='[';
+     //this.ecuacionFac[2]=this.concatenar(this.ecuacionLaplace,1); // este además es el denomnador
+     this.ecuacionFac[2]=this.signo[0]+this.entradaM+"s^2"+
+                         this.signo[1]+this.entradaK+"s"+
+                         this.signo[2]+this.entradaB;
+     this.ecuacionFac[3]=']';
+     this.ecuacionFac[4]='=';
+     this.ecuacionFac[5]=this.signo[3]+this.fuerza+"["+"1/s"+"]";  
+     this.resultado44=this.concatenar(this.ecuacionFac,0);
+
+     //Resultado Final
+     
+      /*/*
+    //Factorizando
 
     //this.resultado111=  this.signo[0]+this.entradaM+"L{"+'x"'+"}"+ 
                         this.signo[1]+this.entradaK+"L{"+"x'"+"}"+
@@ -91,14 +111,7 @@ export class ConIniPage {
     //repartimos la transformada de laplace
 
   
-    //segundo paso:Factorización
-    this.ecuacionFac[0]='X(s)';
-    this.ecuacionFac[1]='[';
-    this.ecuacionFac[2]=this.concatenar(this.ecuacionLaplace,1); // este además es el denomnador
-    this.ecuacionFac[3]=']';
-    this.ecuacionFac[4]='=';
-    this.ecuacionFac[5]='F(s)'
-    this.resultado2=this.concatenar(this.ecuacionFac,0);
+   
   
     //Despeje de la ecuación
     //denominador
@@ -119,7 +132,7 @@ export class ConIniPage {
     }
   
     funRecorrerSigno(vector:number[]){
-      for(var i=0; i<3;i++){
+      for(var i=0; i<6;i++){
         this.signo[i]=this.funSigno(vector[i]);
       }
     }
@@ -163,6 +176,14 @@ export class ConIniPage {
           this.btnSigno[4]=0;
         }else if(this.btnSigno[4]==0){
           this.btnSigno[4]=1;
+        } 
+        break;
+
+        case 5: 
+        if(this.btnSigno[5]==1){
+          this.btnSigno[5]=0;
+        }else if(this.btnSigno[5]==0){
+          this.btnSigno[5]=1;
         } 
         break;
       }

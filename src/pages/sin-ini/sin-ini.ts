@@ -51,6 +51,8 @@ export class SinIniPage {
       this.signo[i]=this.funSigno(vector[i]);
     }
   }
+
+  
   mostrar(){
     this.funRecorrerSigno(this.btnSigno);   
     this.entradaM=this.entradaM.substring(0,this.entradaM.length);
@@ -66,7 +68,7 @@ export class SinIniPage {
     //sobre escribo en la ecuacion inicial los valore de m,k,b
     this.ecuacionLaplace= [this.signo[0],this.entradaM,'(s^2)','X(s)',
                            this.signo[1],this.entradaK,'s','X(s)',
-                           this.signo[0],this.entradaB,'X(s)','=','F(s)'];
+                           this.signo[2],this.entradaB,'X(s)','=','F(s)'];
     
     //this.resultado1=this.concatenar(this.ecuacionLaplace,0);
     //el cero indica que queremos concatenar toda la cadena

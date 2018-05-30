@@ -4,10 +4,10 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-  <ion-navbar>
-    Sin condiciones Sistema M-R-A 
-  </ion-navbar>
+<ion-header color="rojo">
+    <ion-navbar color="rojo">
+      <h6> CONDICIONES INICIALES</h6>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
@@ -18,131 +18,127 @@
     <img src="assets/imgs/ecua.png">
     
     <ion-grid>
-        <ion-row>                   
-            <ion-col col-2 style="text-align: right"> 
-              <button ion-button icon-only clear (click)="cambiar(0)" *ngIf="btnSigno[0]==1" 
-              color="primary"  style="top:30px;">
-              <ion-icon name="add-circle"></ion-icon>
-              </button>  
-
-              <button ion-button icon-only clear (click)="cambiar(0)" *ngIf="btnSigno[0]==0" 
-              color="dark" style="top:30px;">
-              <ion-icon name="remove-circle"></ion-icon>
-              </button>                                                                             
-            </ion-col> 
-
-
+      <ion-row>                   
+          <ion-col col-2 style="text-align: right"> 
+            <button ion-button icon-only clear (click)="cambiar(0)" *ngIf="btnSigno[0]==1" 
+            color="primary"  style="top:30px;">
+            <ion-icon name="add-circle"></ion-icon>
+            </button>  
+            <button ion-button icon-only clear (click)="cambiar(0)" *ngIf="btnSigno[0]==0" 
+            color="dark" style="top:30px;">
+            <ion-icon name="remove-circle"></ion-icon>
+            </button>                                                                             
+          </ion-col> 
           <ion-col col-10>   
             <ion-item >                             
                   <ion-label stacked>Masa</ion-label>                                                           
                   <ion-input type="number" [(ngModel)]="entradaM" name="entradaM"></ion-input>
-              </ion-item>
-              
+              </ion-item>              
           </ion-col>
+      </ion-row>
 
-
-
+      <ion-row>
           <ion-col col-2 style="text-align: right"> 
             <button ion-button icon-only clear (click)="cambiar(1)" *ngIf="btnSigno[1]==1" 
             color="primary"  style="top:30px; ">
             <ion-icon name="add-circle"></ion-icon>
-            </button>  
-
+            </button> 
             <button ion-button icon-only clear (click)="cambiar(1)" *ngIf="btnSigno[1]==0" 
             color="dark" style="top:30px;">
             <ion-icon name="remove-circle"></ion-icon>
             </button>                                                                             
           </ion-col> 
-
           <ion-col col-10>
-              <ion-item>
-                  <ion-label stacked>Resorte</ion-label>
-                  <ion-input type="number" [(ngModel)]="entradaK" name="entradaK"></ion-input>
-              </ion-item>
+            <ion-item>
+                <ion-label stacked>Resorte</ion-label>
+                <ion-input type="number" [(ngModel)]="entradaK" name="entradaK"></ion-input>
+            </ion-item>
           </ion-col>
+      </ion-row>
 
+      <ion-row>
           <ion-col col-2 style="text-align: right"> 
             <button ion-button icon-only clear (click)="cambiar(2)" *ngIf="btnSigno[2]==1" 
             color="primary"  style="top:30px;">
             <ion-icon name="add-circle"></ion-icon>
-            </button>  
-
+            </button> 
             <button ion-button icon-only clear (click)="cambiar(2)" *ngIf="btnSigno[2]==0" 
             color="dark" style="top:30px;">
             <ion-icon name="remove-circle"></ion-icon>
             </button>                                                                             
           </ion-col> 
-
           <ion-col col-10>             
-              <ion-item>
-                  <ion-label stacked>Amortiguador</ion-label>
-                  <ion-input type="number" [(ngModel)]="entradaB" name="entradaB"></ion-input>
-              </ion-item>
+            <ion-item>
+              <ion-label stacked>Amortiguador</ion-label>
+              <ion-input type="number" [(ngModel)]="entradaB" name="entradaB"></ion-input>
+            </ion-item>
           </ion-col>
+      </ion-row>
 
+      <ion-row>
           <ion-col col-2 style="text-align: right"> 
             <button ion-button icon-only clear (click)="cambiar(3)" *ngIf="btnSigno[3]==1" 
             color="primary"  style="top:30px;">
             <ion-icon name="add-circle"></ion-icon>
-            </button>  
-
+            </button> 
             <button ion-button icon-only clear (click)="cambiar(3)" *ngIf="btnSigno[3]==0" 
-            color="danger" style="top:30px;">
+            color="dark" style="top:30px;">
             <ion-icon name="remove-circle"></ion-icon>
             </button>                                                                             
           </ion-col> 
-
           <ion-col col-10>             
               <ion-item>
                   <ion-label stacked>Fuerza</ion-label>
                   <ion-input type="number" [(ngModel)]="fuerza" name="fuerza"></ion-input>
               </ion-item>
           </ion-col>
+      </ion-row>
 
+          <!-- ........................CONDICIONES INICIALES..........................-->
+      <ion-row>
           <ion-col col-2 style="text-align: right"> 
             <button ion-button icon-only clear (click)="cambiar(4)" *ngIf="btnSigno[4]==1" 
             color="primary"  style="top:30px;">
             <ion-icon name="add-circle"></ion-icon>
             </button>  
-
             <button ion-button icon-only clear (click)="cambiar(4)" *ngIf="btnSigno[4]==0" 
             color="dark" style="top:30px;">
             <ion-icon name="remove-circle"></ion-icon>
             </button>                                                                             
-          </ion-col> 
-
+          </ion-col>           
           <ion-col col-4>             
               <ion-item>
                   <ion-label stacked>x'(0)</ion-label>
                   <ion-input type="number" ></ion-input>
               </ion-item>
           </ion-col>
-        
+      </ion-row>
+
+      <ion-row>
           <ion-col col-2 style="text-align: right"> 
-            <button ion-button icon-only clear (click)="cambiar(4)" *ngIf="btnSigno[4]==1" 
-            color="primary"  style="top:30px;">
-            <ion-icon name="add-circle"></ion-icon>
-            </button>  
+              <button ion-button icon-only clear (click)="cambiar(5)" *ngIf="btnSigno[5]==1" 
+              color="primary"  style="top:30px;">
+              <ion-icon name="add-circle"></ion-icon>
+              </button>   
+              <button ion-button icon-only clear (click)="cambiar(5)" *ngIf="btnSigno[5]==0" 
+              color="dark" style="top:30px;">
+              <ion-icon name="remove-circle"></ion-icon>
+              </button>                                                                             
+            </ion-col> 
+            <ion-col col-4>             
+                <ion-item>
+                    <ion-label stacked>x(0)</ion-label>
+                    <ion-input type="number" ></ion-input>
+                </ion-item>
+            </ion-col>                      
+      </ion-row>
 
-            <button ion-button icon-only clear (click)="cambiar(4)" *ngIf="btnSigno[4]==0" 
-            color="dark" style="top:30px;">
-            <ion-icon name="remove-circle"></ion-icon>
-            </button>                                                                             
-          </ion-col> 
-          
 
-          <ion-col col-4>             
-              <ion-item>
-                  <ion-label stacked>x(0)</ion-label>
-                  <ion-input type="number" ></ion-input>
-              </ion-item>
-          </ion-col>
-                      
-        </ion-row>
+      <!-- ........................BOTON DE RESOLVER..........................-->
 
         <ion-row>           
           <ion-col col-12>
-            <button ion-button color="danger" block (click)="mostrar()"> Resolver </button>
+            <button ion-button color="gris" block (click)="mostrar()"> Resolver </button>
           </ion-col>              
         </ion-row>
 
@@ -155,13 +151,15 @@
           </ion-col>
         </ion-row>
 
+
         <ion-row>
             <ion-col col-12>
               <ion-item>
                   <ion-label stacked>Aplicando transformada de laplace: </ion-label>
                   <ion-label *ngIf="variable==1">{{apliLaplace[0]}}</ion-label> 
                   <ion-label *ngIf="variable==1">{{apliLaplace[1]}}</ion-label>  
-                  <ion-label *ngIf="variable==1">{{apliLaplace[2]}}</ion-label>                  
+                  <ion-label *ngIf="variable==1">{{apliLaplace[2]}}</ion-label> 
+                  <ion-label *ngIf="variable==1">{{apliLaplace[3]}}</ion-label>                  
               </ion-item>
             </ion-col>
           </ion-row>
@@ -169,38 +167,39 @@
           <ion-row>
               <ion-col col-12>
                 <ion-item>
-                    <ion-label stacked>Factorizando:</ion-label>                    
-                </ion-item>
-              </ion-col>
-            </ion-row>
-
-          <ion-row>
-              <ion-col col-12>
-                <ion-item>
-                    <ion-label stacked>Función de transferencia:</ion-label>
-                   <!-- <ion-label *ngIf="variable==1">{{resultado3}}</ion-label>-->
+                    <ion-label stacked>Factorizando:</ion-label> 
+                    <ion-label *ngIf="variable==1">{{resultado44}}</ion-label>                   
                 </ion-item>
               </ion-col>
             </ion-row>
 
             <ion-row>
-                <ion-col col-2></ion-col>
-                <ion-col col-8>
-                  <ion-item *ngIf="variable==1">
-                      <ion-label stacked  style="text-align: center;">1</ion-label>                      
+                <ion-col col-12>
+                  <ion-item>
+                      <ion-label stacked>Función de transferencia:</ion-label>
+                     <!-- <ion-label *ngIf="variable==1">{{resultado3}}</ion-label>-->
                   </ion-item>
                 </ion-col>
-                <ion-col col-2></ion-col>
-            </ion-row>
-
-            <ion-row>
-                <ion-col col-3></ion-col>
-                <ion-col col-6>                  
-                      <ion-label stacked  style="text-align: center;">{{resultado3}}</ion-label>                      
-                  
-                </ion-col>
-                <ion-col col-3></ion-col>
-            </ion-row>
+              </ion-row>
+  
+              <ion-row>
+                  <ion-col col-2></ion-col>
+                  <ion-col col-8>
+                    <ion-item *ngIf="variable==1">
+                        <ion-label stacked  style="text-align: center;">1</ion-label>                      
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-2></ion-col>
+              </ion-row>
+  
+              <ion-row>
+                  <ion-col col-3></ion-col>
+                  <ion-col col-6>                  
+                        <ion-label stacked  style="text-align: center;">{{ecuacionFac[2]}}</ion-label>                      
+                    
+                  </ion-col>
+                  <ion-col col-3></ion-col>
+              </ion-row>
 
       </ion-grid>
       

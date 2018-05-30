@@ -4,19 +4,20 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-    <ion-navbar>
-      Sin condiciones Sistema M-R-A 
+<ion-header color="rojor">
+    <ion-navbar color="rojo">
+      <h6>SIN CONDICIONES INICIALES</h6>
     </ion-navbar>
-  </ion-header>
+</ion-header>
   
   <ion-content>
       
-    <img src="../assets/imgs/fr5.png">  
+    <img src="assets/imgs/fr5.png" s>  
       <!--Ecuación Dinámica 
       {{ecuacionLaplace}}-->          
-      <img src="../assets/imgs/ecua.png">
+      <img src="assets/imgs/ecua.png">
       
+
   
       <ion-grid>
           <ion-row>
@@ -25,7 +26,7 @@
               <button ion-button outline (click)="cambiar(0)" *ngIf="btnSigno[0]==1" 
               color="primary" block style="top:30px; width:5px;height:20px;">+</button> 
               <button ion-button outline (click)="cambiar(0)" *ngIf="btnSigno[0]==0" 
-              color="primary" block style="top:30px; width:5px;height:20px;">-</button>                                             
+              color="dark" block style="top:30px; width:5px;height:20px;">-</button>                                             
           </ion-col> 
 
             <ion-col col-10>   
@@ -40,7 +41,7 @@
                 <button ion-button outline (click)="cambiar(1)" *ngIf="btnSigno[1]==1" 
                 color="primary" block style="top:30px; width:5px;height:20px;">+</button> 
                 <button ion-button outline (click)="cambiar(1)" *ngIf="btnSigno[1]==0" 
-                color="primary" block style="top:30px; width:5px;height:20px;">-</button>                                             
+                color="dark" block style="top:30px; width:5px;height:20px;">-</button>                                             
             </ion-col> 
             <ion-col col-10>
                 <ion-item>
@@ -53,7 +54,7 @@
                 <button ion-button outline (click)="cambiar(2)" *ngIf="btnSigno[2]==1" 
                 color="primary" block style="top:30px; width:5px;height:20px;">+</button> 
                 <button ion-button outline (click)="cambiar(2)" *ngIf="btnSigno[2]==0" 
-                color="primary" block style="top:30px; width:5px;height:20px;">-</button>                                             
+                color="dark" block style="top:30px; width:5px;height:20px;">-</button>                                             
             </ion-col> 
 
             <ion-col col-10>             
@@ -66,7 +67,7 @@
           </ion-row>
           <ion-row>           
             <ion-col col-12>
-              <button ion-button color="danger" block (click)="mostrar()"> Resolver </button>
+              <button ion-button color="gris" block (click)="mostrar()"> Resolver </button>
             </ion-col>              
           </ion-row>
   
