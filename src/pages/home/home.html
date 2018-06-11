@@ -1,17 +1,25 @@
 
 
-<ion-content padding style="background-image: url('assets/imgs/logoDisenio.png');
+<ion-content padding style="background-image: url('assets/imgs/logo.jpeg');
 background-repeat: no-repeat;
 background-size:cover;background-position: center;
-background-size: contain;">
-  
+background-size: contain;"> 
 
-    <button style="margin-top: 450px;margin-left: 25%;width: max-content;margin-right: 25%;" ion-button color="light" outline (click)="goToSinInicialPage()"><h6>Sin Condiciones</h6> </button>
-    <button style="margin-left: 25%;width: max-content;margin-right: 25%;" ion-button color="light" outline (click)="goToConInicialPage()"><h6>Con Condiciones</h6> </button>
+    <button style="margin-top: 400px;" 
+    ion-button color="light" block
+    outline (click)="goToSinInicialPage()">
+    <h6>Sin Condiciones</h6> </button>
 
- 
+
+    <button  
+    ion-button block color="light" outline (click)="goToConInicialPage()">
+    <h6>Con Condiciones</h6> </button>
+
+
+    <button block
+    ion-button color="rojo" outline (click)="go()"><h6 style="padding-top: center;">Links</h6>
+     </button>
     
-
-  
- 
 </ion-content>
+
+

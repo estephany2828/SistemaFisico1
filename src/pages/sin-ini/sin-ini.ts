@@ -17,6 +17,7 @@ import {SistemaService} from'../../service/sistema.service';
 export class SinIniPage {
   ecuacionInicial: string[] = [];
   ecuacionLaplace: string[] = [];
+  auxiliar:string[]=[];
   ecuacionFac: string[] = [];
   entradaM: string;
   entradaK: string;
@@ -64,11 +65,26 @@ export class SinIniPage {
                            this.signo[1],this.entradaK,"x'",
                            this.signo[2],this.entradaB,'x','=','Fa'];    
     this.resultado=this.concatenar(this.ecuacionInicial,0);
+
+    this.auxiliar[0]= "L{"+this.signo[0]+this.entradaM+'x"'+
+                          this.signo[1]+this.entradaK+"x'"+
+                          this.signo[2]+this.entradaB+'x'+"}"+'='+'L{Fa}';
+    
+    this.auxiliar[1]= "L{"+this.signo[0]+this.entradaM+'x"'+"}"+"+"+
+                      "L{"+this.signo[1]+this.entradaK+"x'"+"}"+"+"+
+                      "L{"+this.signo[2]+this.entradaB+'x'+"}"+'='+'L{Fa}';
+
+    this.auxiliar[2]= this.signo[0]+this.entradaM+"L{"+'x"'+"}"+
+                      this.signo[1]+this.entradaK+"L{"+"x'"+"}"+
+                      this.signo[2]+this.entradaB+"L{"+'x'+"}"+'='+'L{Fa}'; 
+                      
+                  
     
     //sobre escribo en la ecuacion inicial los valore de m,k,b
     this.ecuacionLaplace= [this.signo[0],this.entradaM,'(s^2)','X(s)',
                            this.signo[1],this.entradaK,'s','X(s)',
                            this.signo[2],this.entradaB,'X(s)','=','F(s)'];
+   
     
     //this.resultado1=this.concatenar(this.ecuacionLaplace,0);
     //el cero indica que queremos concatenar toda la cadena

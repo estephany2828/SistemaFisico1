@@ -84,7 +84,11 @@
               <ion-col col-12>
                 <ion-item>
                     <ion-label stacked>Aplicando transformada de laplace: </ion-label>
+                    <ion-label *ngIf="variable==1">{{auxiliar[0]}}</ion-label>
+                    <ion-label *ngIf="variable==1">{{auxiliar[1]}}</ion-label>
+                    <ion-label *ngIf="variable==1">{{auxiliar[2]}}</ion-label>
                     <ion-label *ngIf="variable==1">{{resultado1}}</ion-label>
+                    
                 </ion-item>
               </ion-col>
             </ion-row>
@@ -101,7 +105,7 @@
             <ion-row>
                 <ion-col col-12>
                   <ion-item>
-                      <ion-label stacked>Función de transferencia:</ion-label>
+                      <ion-label stacked>Función de transferencia X(s)/F(s):</ion-label>
                      <!-- <ion-label *ngIf="variable==1">{{resultado3}}</ion-label>-->
                   </ion-item>
                 </ion-col>
@@ -116,6 +120,7 @@
                   </ion-col>
                   <ion-col col-2></ion-col>
               </ion-row>
+
   
               <ion-row>
                   <ion-col col-3></ion-col>

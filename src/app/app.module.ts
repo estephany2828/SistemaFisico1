@@ -8,14 +8,17 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ConIniPage } from '../pages/con-ini/con-ini';
 import { SinIniPage } from '../pages/sin-ini/sin-ini';
-
+import { EjemplosPage} from '../pages/ejemplos/ejemplos';
+import { LinkPage} from '../pages/link/link';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 @NgModule({
   declarations: [
+    LinkPage,
+    EjemplosPage,
     ConIniPage,
-    SinIniPage,
+    SinIniPage,    
     MyApp,
-    HomePage,
-    
+    HomePage    
   ],
   imports: [
     BrowserModule,
@@ -23,15 +26,16 @@ import { SinIniPage } from '../pages/sin-ini/sin-ini';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    LinkPage,
+    EjemplosPage,
     ConIniPage,
-    SinIniPage,
+    SinIniPage,    
     MyApp,
-    HomePage,
-    
-    
+    HomePage    
   ],
   providers: [
     StatusBar,
+    InAppBrowser,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

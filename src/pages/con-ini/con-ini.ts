@@ -25,6 +25,10 @@ export class ConIniPage {
   entradaK: string;
   entradaB: string;
   fuerza:string;
+  fun:string='';
+  funP:string='';
+  fun1:string='';
+  funP1:string='';
   resultado: string='';
   apliLaplace: string[]=[];//index0: transformada a toda la ecuacion
   resultado11: string='';
@@ -38,23 +42,32 @@ export class ConIniPage {
   signo:string[]=[];//variable que almacena los signos
   btnSigno:number[]=[1,1,1,1,1,1];
   reunir:string='';
+  con:number; 
+  numero:string;
+  numeroS:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.variable==0;
 
   }
+  resolver(){
+     }
  
   mostrar(){
     this.funRecorrerSigno(this.btnSigno);   
     this.entradaM=this.entradaM.substring(0,this.entradaM.length);
     this.entradaK=this.entradaK.substring(0,this.entradaK.length);
     this.entradaB=this.entradaB.substring(0,this.entradaB.length);
-    this.fuerza=this.fuerza.substring(0,this.fuerza.length);    
+    this.fuerza=this.fuerza.substring(0,this.fuerza.length); 
+    this.fun=this.fun.substring(0,this.fun.length); 
+    this.funP=this.funP.substring(0,this.funP.length);  
+
+    //leemos las condiciones iniciales
 
     //ecuacion en terminos del desplazamiento
     this.ecuacionInicial= [this.signo[0],this.entradaM,'x"',
                            this.signo[1],this.entradaK,"x'",
-                           this.signo[2],this.entradaB,'x',"=",this.signo[3],this.fuerza,"u(t)"];    
+                           this.signo[2],this.entradaB,'x',"=",this.signo[3],this.fuerza,"f(t)"];    
     this.resultado=this.concatenar(this.ecuacionInicial,0);      
     //this.resultado1=this.concatenar(this.ecuacionLaplace,0);
     //el cero indica que queremos concatenar toda la cadena
@@ -72,59 +85,84 @@ export class ConIniPage {
                         this.signo[3]+"L{" + this.concatenarVectorIndex(this.ecuacionInicial,11,this.ecuacionInicial.length-1)+"}";
                       
     
-    this.apliLaplace[3]=  this.signo[0]+this.entradaM+"["+"s^2"+'x(s)'+"]"+ 
-                          this.signo[1]+this.entradaK+"["+"s"+'x(s)'+"]"+ 
-                          this.signo[2]+this.entradaB+"["+'x(s)'+"]"+"="+
-                          this.signo[3]+this.fuerza+"["+"1/s"+"]";    
-     //Factorización
-     this.ecuacionFac[0]='X(s)';
-     this.ecuacionFac[1]='[';
-     //this.ecuacionFac[2]=this.concatenar(this.ecuacionLaplace,1); // este además es el denomnador
-     this.ecuacionFac[2]=this.signo[0]+this.entradaM+"s^2"+
-                         this.signo[1]+this.entradaK+"s"+
-                         this.signo[2]+this.entradaB;
-     this.ecuacionFac[3]=']';
-     this.ecuacionFac[4]='=';
-     this.ecuacionFac[5]=this.signo[3]+this.fuerza+"["+"1/s"+"]";  
-     this.resultado44=this.concatenar(this.ecuacionFac,0);
+    this.apliLaplace[3]=  this.signo[0]+this.entradaM+"["+"s^2"+'X(s)'+"-"+"s"+'x(0)'+"-"+"x'(0)"+"]"+ 
+                          this.signo[1]+this.entradaK+"["+"s"+'X(s)'+"-"+"x(0)"+"]"+ 
+                          this.signo[2]+this.entradaB+"["+'X(s)'+"]"+"="+
+                          this.signo[3]+this.fuerza+"F(s)";//+"["+"1/s"+"]"; 
+        
+  this.apliLaplace[4]=    this.signo[0]+this.entradaM+"["+"s^2"+'X(s)'+"-"+"s"+this.fun+"-"+this.funP+"]"+ 
+                          this.signo[1]+this.entradaK+"["+"s"+'X(s)'+"-"+this.fun+"]"+ 
+                          this.signo[2]+this.entradaB+"["+'X(s)'+"]"+"="+
+                          this.signo[3]+this.fuerza+"F(s)";//+"["+"1/s"+"]";
 
-     //Resultado Final
-     
-      /*/*
-    //Factorizando
+  //convertimo a number para multiplicar n[m]
+  this.fun1=this.fun;
+  this.funP1=this.funP;
+  this.con=parseFloat(this.fun1) ;         
+  this.fun1=(parseFloat(this.fun1)*parseFloat(this.entradaM)).toString();
+  this.funP1=(parseFloat(this.funP1)*parseFloat(this.entradaM)).toString();
+  //multiplicacion de signos
 
-    //this.resultado111=  this.signo[0]+this.entradaM+"L{"+'x"'+"}"+ 
-                        this.signo[1]+this.entradaK+"L{"+"x'"+"}"+
-                        this.signo[2]+this.entradaB+"L{"+"x"+"}"+"="+
-                        "L{" + this.concatenarVectorIndex(this.ecuacionInicial,10,this.ecuacionInicial.length-1)+"}";
-                    
-    
 
-     //sobre escribo en la ecuacion inicial los valore de m,k,b
-     this.ecuacionLaplace= [this.signo[0],this.entradaM,'(s^2)','X(s)',
-     this.signo[1],this.entradaK,'s','X(s)',
-     this.signo[0],this.entradaB,'X(s)','=','F(s)'];
-                        this.resultado1111=  this.resultado1=this.concatenar(this.ecuacionLaplace,0);
-   
-    //this.resultado1=this.concatenar(this.ecuacionLaplace,0);
-    
-    //repartimos la transformada de laplace
+  this.apliLaplace[5]=    this.signo[0]+"["+this.entradaM+"s^2"+'X(s)'+
+                          this.funConSigno('-',this.signo[5])+"s"+
+                          this.fun1+this.funConSigno('-',this.signo[4])+parseFloat(this.funP1)+"]"+ //-----
+                          "+"+"["+this.signo[1]+this.entradaK+"s"+'X(s)'
+                          +this.funConSigno('-',this.signo[5])+(this.con*parseFloat(this.entradaK)).toString()+"]"+ //-----
+                          this.signo[2]+this.entradaB+"["+'X(s)'+"]"+"="+
+                          this.signo[3]+this.fuerza+"F(s)";//+"["+"1/s"+"]";    
+                          
+ this.numero=this.funSumaSigno(
+                  // le paso los signos y los numeros
+              this.funConSigno('-',this.signo[4]),this.funConSigno('-',this.signo[5]),                                                      
+              parseFloat(this.funP1),this.con*parseFloat(this.entradaK));
+
+  this.numeroS =this.numero.substring(0,1);//this.funConSigno(this.funConSigno('-',this.signo[5]),this.funConSigno('-',this.signo[5]));
+  this.numero =this.numero.substring(1,this.numero.length);  
+
+
+  this.apliLaplace[6]=    this.signo[0]+this.entradaM+"s^2"+'X(s)'+                          
+                          this.funConSigno('-',this.signo[5])+this.fun1+"s"+
+                          this.numeroS+this.numero+ 
+                          this.signo[1]+this.entradaK+"s"+'X(s)'+                          
+                          this.signo[2]+this.entradaB+'X(s)'+"="+
+                          this.signo[3]+this.fuerza+"F(s)"; //+"["+"1/s"+"]";
 
   
-   
-  
-    //Despeje de la ecuación
-    //denominador
-    this.resultado3=  this.ecuacionFac[2];
-    */
-    this.variable=1;
+  this.apliLaplace[7]=    "X(s)" + "[" + this.signo[0]+this.entradaM+"s^2" +
+                          this.signo[1]+this.entradaK+"s"+
+                          this.signo[2]+this.entradaB+ "]" + 
+                          this.funConSigno('-',this.signo[5])+this.fun1+"s"+                          
+                          this.numeroS+this.numero+                         
+                          "="+
+                          this.signo[3]+this.fuerza+"F(s)";//+"["+"1/s"+"]";  
+
+
+
+
+  this.apliLaplace[8]=                            
+                          this.signo[3]+this.fuerza   //"+["+"1/s"+"]"
+                          +this.funConSigno('-',this.funConSigno('-',this.signo[5]))+this.fun1+"s"+
+                          this.funConSigno('-',this.numeroS)+                        
+                          +this.numero;
+
+  this.apliLaplace[9]=
+                          this.signo[0]+this.entradaM+"s^2" +
+                          this.signo[1]+this.entradaK+"s"+
+                          this.signo[2]+this.entradaB;
+   this.variable=1;
 
     }
+
 
     ionViewDidLoad() {
       console.log('ionViewDidLoad ConIniPage');
     }
-  
+    funConSigno(s1:string,s2:string):string{
+      if(s1.localeCompare('-')&&s2.localeCompare('-')){return '+';}
+      else if(s1.localeCompare('+')&&s2.localeCompare('+')){return '+';}
+      else{return '-';}
+    }
     funSigno(signo:number):string{
      if(signo==1){
        return "+";
@@ -138,6 +176,15 @@ export class ConIniPage {
     }
   
 
+    funSumaSigno(signo1:string,signo2:string,n1:number,n2:number):string{
+      if(signo1.localeCompare('-')&&signo2.localeCompare('-')){return signo1+((n1+n2).toString());}
+      else if(signo1.localeCompare('+')&&signo2.localeCompare('+')){return signo1+((n1+n2).toString());}
+      else if (signo1.localeCompare('+')&&signo2.localeCompare('-')&&n1>=n2){return signo1+((n1-n2).toString());}
+      else if (signo1.localeCompare('+')&&signo2.localeCompare('-')&&n1<=n2){return signo2+((n2-n1).toString());}
+      else if (signo1.localeCompare('-')&&signo2.localeCompare('+')&&n1>=n2){return signo1+((n1-n2).toString());}
+      else if (signo1.localeCompare('-')&&signo2.localeCompare('+')&&n1<=n2){return signo2+((n2-n1).toString());}     
+    
+    }
   
     
     cambiar(estado:number){

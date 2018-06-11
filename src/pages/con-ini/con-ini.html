@@ -19,16 +19,12 @@
     
     <ion-grid>
       <ion-row>                   
-          <ion-col col-2 style="text-align: right"> 
-            <button ion-button icon-only clear (click)="cambiar(0)" *ngIf="btnSigno[0]==1" 
-            color="primary"  style="top:30px;">
-            <ion-icon name="add-circle"></ion-icon>
-            </button>  
-            <button ion-button icon-only clear (click)="cambiar(0)" *ngIf="btnSigno[0]==0" 
-            color="dark" style="top:30px;">
-            <ion-icon name="remove-circle"></ion-icon>
-            </button>                                                                             
-          </ion-col> 
+        <ion-col col-2 >                                         
+          <button ion-button outline (click)="cambiar(0)" *ngIf="btnSigno[0]==1" 
+          color="primary" block style="top:30px; width:5px;height:20px;">+</button> 
+          <button ion-button outline (click)="cambiar(0)" *ngIf="btnSigno[0]==0" 
+          color="dark" block style="top:30px; width:5px;height:20px;">-</button>                                             
+      </ion-col> 
           <ion-col col-10>   
             <ion-item >                             
                   <ion-label stacked>Masa</ion-label>                                                           
@@ -38,16 +34,12 @@
       </ion-row>
 
       <ion-row>
-          <ion-col col-2 style="text-align: right"> 
-            <button ion-button icon-only clear (click)="cambiar(1)" *ngIf="btnSigno[1]==1" 
-            color="primary"  style="top:30px; ">
-            <ion-icon name="add-circle"></ion-icon>
-            </button> 
-            <button ion-button icon-only clear (click)="cambiar(1)" *ngIf="btnSigno[1]==0" 
-            color="dark" style="top:30px;">
-            <ion-icon name="remove-circle"></ion-icon>
-            </button>                                                                             
-          </ion-col> 
+        <ion-col col-2 >                                         
+          <button ion-button outline (click)="cambiar(1)" *ngIf="btnSigno[1]==1" 
+          color="primary" block style="top:30px; width:5px;height:20px;">+</button> 
+          <button ion-button outline (click)="cambiar(1)" *ngIf="btnSigno[1]==0" 
+          color="dark" block style="top:30px; width:5px;height:20px;">-</button>                                             
+      </ion-col> 
           <ion-col col-10>
             <ion-item>
                 <ion-label stacked>Resorte</ion-label>
@@ -57,16 +49,12 @@
       </ion-row>
 
       <ion-row>
-          <ion-col col-2 style="text-align: right"> 
-            <button ion-button icon-only clear (click)="cambiar(2)" *ngIf="btnSigno[2]==1" 
-            color="primary"  style="top:30px;">
-            <ion-icon name="add-circle"></ion-icon>
-            </button> 
-            <button ion-button icon-only clear (click)="cambiar(2)" *ngIf="btnSigno[2]==0" 
-            color="dark" style="top:30px;">
-            <ion-icon name="remove-circle"></ion-icon>
-            </button>                                                                             
-          </ion-col> 
+        <ion-col col-2 >                                         
+          <button ion-button outline (click)="cambiar(2)" *ngIf="btnSigno[2]==1" 
+          color="primary" block style="top:30px; width:5px;height:20px;">+</button> 
+          <button ion-button outline (click)="cambiar(2)" *ngIf="btnSigno[2]==0" 
+          color="dark" block style="top:30px; width:5px;height:20px;">-</button>                                             
+      </ion-col> 
           <ion-col col-10>             
             <ion-item>
               <ion-label stacked>Amortiguador</ion-label>
@@ -76,16 +64,12 @@
       </ion-row>
 
       <ion-row>
-          <ion-col col-2 style="text-align: right"> 
-            <button ion-button icon-only clear (click)="cambiar(3)" *ngIf="btnSigno[3]==1" 
-            color="primary"  style="top:30px;">
-            <ion-icon name="add-circle"></ion-icon>
-            </button> 
-            <button ion-button icon-only clear (click)="cambiar(3)" *ngIf="btnSigno[3]==0" 
-            color="dark" style="top:30px;">
-            <ion-icon name="remove-circle"></ion-icon>
-            </button>                                                                             
-          </ion-col> 
+        <ion-col col-2 >                                         
+          <button ion-button outline (click)="cambiar(3)" *ngIf="btnSigno[3]==1" 
+          color="primary" block style="top:30px; width:5px;height:20px;">+</button> 
+          <button ion-button outline (click)="cambiar(3)" *ngIf="btnSigno[3]==0" 
+          color="dark" block style="top:30px; width:5px;height:20px;">-</button>                                             
+      </ion-col> 
           <ion-col col-10>             
               <ion-item>
                   <ion-label stacked>Fuerza</ion-label>
@@ -96,39 +80,31 @@
 
           <!-- ........................CONDICIONES INICIALES..........................-->
       <ion-row>
-          <ion-col col-2 style="text-align: right"> 
-            <button ion-button icon-only clear (click)="cambiar(4)" *ngIf="btnSigno[4]==1" 
-            color="primary"  style="top:30px;">
-            <ion-icon name="add-circle"></ion-icon>
-            </button>  
-            <button ion-button icon-only clear (click)="cambiar(4)" *ngIf="btnSigno[4]==0" 
-            color="dark" style="top:30px;">
-            <ion-icon name="remove-circle"></ion-icon>
-            </button>                                                                             
-          </ion-col>           
+        <ion-col col-2 >                                         
+          <button ion-button outline (click)="cambiar(4)" *ngIf="btnSigno[4]==1" 
+          color="primary" block style="top:30px; width:5px;height:20px;">+</button> 
+          <button ion-button outline (click)="cambiar(4)" *ngIf="btnSigno[4]==0" 
+          color="dark" block style="top:30px; width:5px;height:20px;">-</button>                                             
+      </ion-col>           
           <ion-col col-4>             
               <ion-item>
                   <ion-label stacked>x'(0)</ion-label>
-                  <ion-input type="number" ></ion-input>
+                  <ion-input type="number" [(ngModel)]="funP"></ion-input>
               </ion-item>
           </ion-col>
       </ion-row>
 
       <ion-row>
-          <ion-col col-2 style="text-align: right"> 
-              <button ion-button icon-only clear (click)="cambiar(5)" *ngIf="btnSigno[5]==1" 
-              color="primary"  style="top:30px;">
-              <ion-icon name="add-circle"></ion-icon>
-              </button>   
-              <button ion-button icon-only clear (click)="cambiar(5)" *ngIf="btnSigno[5]==0" 
-              color="dark" style="top:30px;">
-              <ion-icon name="remove-circle"></ion-icon>
-              </button>                                                                             
-            </ion-col> 
+        <ion-col col-2 >                                         
+          <button ion-button outline (click)="cambiar(5)" *ngIf="btnSigno[5]==1" 
+          color="primary" block style="top:30px; width:5px;height:20px;">+</button> 
+          <button ion-button outline (click)="cambiar(5)" *ngIf="btnSigno[5]==0" 
+          color="dark" block style="top:30px; width:5px;height:20px;">-</button>                                          
+      </ion-col> 
             <ion-col col-4>             
                 <ion-item>
                     <ion-label stacked>x(0)</ion-label>
-                    <ion-input type="number" ></ion-input>
+                    <ion-input type="number" [(ngModel)]="fun"></ion-input>
                 </ion-item>
             </ion-col>                      
       </ion-row>
@@ -152,6 +128,7 @@
         </ion-row>
 
 
+
         <ion-row>
             <ion-col col-12>
               <ion-item>
@@ -165,10 +142,22 @@
           </ion-row>
 
           <ion-row>
+            <ion-col col-12>
+              <ion-item>
+                  <ion-label stacked>Reemplazo de Condiciones Iniciales:</ion-label> 
+                  <ion-label *ngIf="variable==1">{{apliLaplace[4]}}</ion-label>    
+                  <ion-label *ngIf="variable==1">{{apliLaplace[5]}}</ion-label>                   
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
               <ion-col col-12>
                 <ion-item>
                     <ion-label stacked>Factorizando:</ion-label> 
-                    <ion-label *ngIf="variable==1">{{resultado44}}</ion-label>                   
+                    <ion-label *ngIf="variable==1">{{apliLaplace[6]}}</ion-label>   
+                       
+                    <ion-label *ngIf="variable==1">{{apliLaplace[7]}}</ion-label>                   
                 </ion-item>
               </ion-col>
             </ion-row>
@@ -176,7 +165,7 @@
             <ion-row>
                 <ion-col col-12>
                   <ion-item>
-                      <ion-label stacked>Función de transferencia:</ion-label>
+                      <ion-label stacked>Función de transferencia X(s)/F(s):</ion-label>
                      <!-- <ion-label *ngIf="variable==1">{{resultado3}}</ion-label>-->
                   </ion-item>
                 </ion-col>
@@ -186,7 +175,7 @@
                   <ion-col col-2></ion-col>
                   <ion-col col-8>
                     <ion-item *ngIf="variable==1">
-                        <ion-label stacked  style="text-align: center;">1</ion-label>                      
+                        <ion-label stacked  style="text-align: center;">{{apliLaplace[8]}}</ion-label>                      
                     </ion-item>
                   </ion-col>
                   <ion-col col-2></ion-col>
@@ -195,7 +184,7 @@
               <ion-row>
                   <ion-col col-3></ion-col>
                   <ion-col col-6>                  
-                        <ion-label stacked  style="text-align: center;">{{ecuacionFac[2]}}</ion-label>                      
+                        <ion-label stacked  style="text-align: center;">{{apliLaplace[9]}}</ion-label>                      
                     
                   </ion-col>
                   <ion-col col-3></ion-col>
